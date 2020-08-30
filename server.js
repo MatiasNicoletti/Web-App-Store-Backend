@@ -1,9 +1,13 @@
 const app = require('./app');
-console.log(process.env.PORT);
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './config.env' });
+
 const port = process.env.PORT || 3050; //heroku won't work with out .env.port
 const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
+
 
 process.on('unhandledRejection', err => {
     console.log('UNHANDLED REJECTION! App shutting down');
