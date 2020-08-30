@@ -1,5 +1,4 @@
+const handlerController = require('./handlerController');
+const Product = require('../models/productModel');
 
-exports.create = (req,res,next) => {
-    console.log('llego');
-    res.status(200).json({message: 'success'});
-}
+exports.create = handlerController.create(Product);
