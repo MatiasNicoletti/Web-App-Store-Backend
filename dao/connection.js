@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: './config.env' });
 
-
-const databaseLink = process.env.DATA_BASE_LOCAL;
+exports.connect = () => {
+  const databaseLink = process.env.DATA_BASE_LOCAL;
   mongoose
     .connect(databaseLink, {
       useNewUrlParser: true,
@@ -15,3 +15,5 @@ const databaseLink = process.env.DATA_BASE_LOCAL;
     .then(() => console.log('DB connection successful!')).catch(error => {
         console.log('Connection to DB has failed'); 
     });
+
+}

@@ -1,6 +1,7 @@
 const app = require('./app');
 const dotenv = require('dotenv');
 const connection = require('./dao/connection');
+const Product = require('./models/productModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -9,6 +10,9 @@ const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
 
+connection.connect();
+
+Product.create({name: 'test'});
  
 process.on('unhandledRejection', err => {
     console.log('UNHANDLED REJECTION! App shutting down');
