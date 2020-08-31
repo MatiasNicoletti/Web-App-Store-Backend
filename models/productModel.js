@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const validation = false;
 const productSchema = mongoose.Schema(
@@ -60,12 +61,15 @@ const productSchema = mongoose.Schema(
                     name: String //to get the image product-red, -green, ...
                 }
             ]
+        },
+        slug: {
+            type:String
         }
     }
 );
 
 productSchema.pre('save', function (next) {
-
+    this.slug = slugify(this.name, { lower: true });
     this.stock.currentStock = this.stock.initialStock;
 
     next();
