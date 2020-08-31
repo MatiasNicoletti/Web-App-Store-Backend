@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema(
             type: String,
             required: validation
         },
-        desc: {
+        description: {
             type: String,
             required: validation
         },
@@ -25,7 +25,10 @@ const productSchema = mongoose.Schema(
         },
         stock: {
             initialStock: Number,
-            currentStock: Number
+            currentStock: {
+                type:Number,
+                default: 0
+            }
         },
         mainImage: {
             type: String
@@ -60,6 +63,13 @@ const productSchema = mongoose.Schema(
         }
     }
 );
+
+productSchema.pre('save', function (next) {
+
+    this.stock.currentStock = this.stock.initialStock;
+
+    next();
+});
 
 const Product = mongoose.model('Product', productSchema);
 
