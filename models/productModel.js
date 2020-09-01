@@ -40,7 +40,7 @@ const productSchema = mongoose.Schema(
             height: Number,
             depth: Number
         },
-        arrivedAt: {
+        publishedAt: {
             type: Date,
             default: Date.now()
         },
@@ -50,18 +50,18 @@ const productSchema = mongoose.Schema(
             },
             subCategories: [String]
         },
-        color: {
-            defaultColor: { 
-                type: String,
-                name: String 
-            },
-            colorVariants:[
-                {
-                    type: String,
-                    name: String //to get the image product-red, -green, ...
-                }
-            ]
-        },
+        // color: {
+        //     defaultColor: { 
+        //         type: String,
+        //         name: String 
+        //     },
+        //     colorVariants:[
+        //         {
+        //             type: String,
+        //             name: String //to get the image product-red, -green, ...
+        //         }
+        //     ]
+        // },
         slug: {
             type:String
         }
